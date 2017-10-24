@@ -3,7 +3,6 @@ package net.sinou.poc.cms;
 import java.text.MessageFormat;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -13,6 +12,7 @@ import net.sinou.poc.cms.domain.Editor;
 
 public class SimpleApp {
 
+	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		final Configuration configuration = new Configuration().configure();
 		final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
@@ -25,24 +25,27 @@ public class SimpleApp {
 		session.save(editor);
 		session.getTransaction().commit();
 
-		final List<Editor> books = session.createCriteria(Editor.class).list();
-
 		System.out.println("\n----\n");
-		System.out.println(MessageFormat.format("Storing {0} editors in the database", books.size()));
-		for (final Editor b : books) {
-			System.out.println(b);
-		}
+		List res = session.createCriteria(Editor.class).list();
+		debug(res, "session.createCriteria(Editor.class)");
 
-		Query query = session.createQuery("from EDITORS");
-		@SuppressWarnings("unchecked")
-		List<Editor> editorList = (List<Editor>) query.list();
-		for (Editor contact : editorList) {
-			System.out.println(
-					"Id: " + contact.getId() + " | Name:" + contact.getName() + " | Email:" + contact.getEmail());
-		}
+		res = session.createSQLQuery("Select * from EDITORS").list();
+		debug(res, "session.createSQLQuery(\"Select * from EDITORS\")");
 
-		System.out.println("\n----\n");
+		res = session.createQuery("from EDITORS").list();
+		debug(res, "session.createQuery(\"from EDITORS\")");
+
 		session.close();
 		factory.close();
+	}
+
+	@SuppressWarnings("rawtypes")
+	private static void debug(List results, String queryStr) {
+		System.out.println("Executing: " + queryStr + "\n");
+		System.out.println(MessageFormat.format("Found {0} rows in the database", results.size()));
+		for (Object b : results) {
+			System.out.println(b);
+		}
+		System.out.println("\n----\n");
 	}
 }
