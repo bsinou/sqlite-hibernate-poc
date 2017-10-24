@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+      		url "https://plugins.gradle.org/m2/"
+    	}
+ 
+    	dependencies {
+        	classpath "io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE"
+    	}
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: "io.spring.dependency-management"
+
+
+version = '0.0.1'
+description = 'Small PoC to validate SQLite / Hibernate integration in a Tomcat deployment context'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+// TP Versions
+ext {
+	springBomVersion='2.0.8.RELEASE'
+	// JPA
+	sqliteJdbc='3.20.1'
+	sqliteDialect='0.1.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+  imports {
+        mavenBom "io.spring.platform:platform-bom:$springBomVersion"
+  }
+  
+  // Override default provided version
+  dependencies {
+  }
+}
+
+
+
+dependencies {
+    compile (
+    	// JPA
+    	"com.zaxxer:HikariCP",
+    	"org.xerial:sqlite-jdbc:$sqliteJdbc",
+		"com.enigmabridge:hibernate4-sqlite-dialect:$sqliteDialect",
+		
+		// h2 console
+		"com.h2database:h2",
+		"org.hibernate:hibernate-core",
+		
+		// Logging
+    	"ch.qos.logback:logback-classic",
+    	"org.slf4j:jcl-over-slf4j",
+    )
+
+    testCompile (
+		"junit:junit"
+	)
+}
+
+// Current Jar
+jar {
+    baseName = 'sqlite-hibernate-poc'
+    version =  '0.0.1'
+}
+
+// copy all used dependencies to a known folder
+task copyToLib(type: Copy) {
+    into "$buildDir/libs"
+    from configurations.runtime
+}
+
+compileJava.dependsOn(clean)
+build.dependsOn(copyToLib)
+

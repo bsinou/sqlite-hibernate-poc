@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
+		<!-- Relative to the current user.dir (root of the project) -->
+		<property name="hibernate.connection.url">jdbc:sqlite:exec/test.sqlite</property>
+		<property name="hibernate.connection.username"></property>
+		<property name="hibernate.connection.password"></property>
+
+
+		<!-- JDBC connection pool (use the built-in) -->
+		<property name="hibernate.connection.pool_size">1</property>
+		<!-- Disable the second-level cache -->
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+		<!-- Echo all executed SQL to stdout -->
+		<property name="hibernate.show_sql">true</property>
+		<!-- Drop and re-create the database schema on startup -->
+		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!--  <property name="hibernate.hbm2ddl.auto">update</property>-->
+
+		<!-- SQL dialect -->
+		<property name="hibernate.dialect">com.enigmabridge.hibernate.dialect.SQLiteDialect</property>
+		<!-- Debug  -->
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.show_sql">true</property>
+
+		<!-- The mapping information of entities -->
+<!-- 		<mapping class="net.sinou.poc.cms.domain.Editor" /> -->
+	</session-factory>
+
+	<!-- Corresponding H2 configuration to test -->
+</hibernate-configuration>
