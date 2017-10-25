@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 import net.sinou.poc.cms.domain.Editor;
+import net.sinou.poc.cms.domain.User;
 
 public class SimpleApp {
 
@@ -17,7 +18,7 @@ public class SimpleApp {
 		final Configuration configuration = new Configuration().configure();
 		final StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
 				.applySettings(configuration.getProperties());
-		configuration.addAnnotatedClass(Editor.class);
+		configuration.addAnnotatedClass(Editor.class).addAnnotatedClass(User.class);
 		final SessionFactory factory = configuration.buildSessionFactory(builder.build());
 		final Session session = factory.openSession();
 		final Editor editor = new Editor("JD", "jd@examle.com");

@@ -6,10 +6,7 @@
 	<session-factory>
 		<property name="hibernate.connection.driver_class">org.sqlite.JDBC</property>
 		<!-- Relative to the current user.dir (root of the project) -->
-		<!-- <property name="hibernate.connection.url">jdbc:sqlite:exec/test.sqlite</property> -->
-		<!-- Absolute path -->
-		<property name="hibernate.connection.url">jdbc:sqlite:/tmp/sqlite/db.sqlite</property>
-
+		<property name="hibernate.connection.url">jdbc:sqlite:exec/test.sqlite</property>
 		<property name="hibernate.connection.username"></property>
 		<property name="hibernate.connection.password"></property>
 

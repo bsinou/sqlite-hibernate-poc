@@ -3,9 +3,12 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
-	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
-	<classpathentry path="bin" kind="output"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8/"/>
+
+	<classpathentry kind="con" path="org.eclipse.buildship.core.gradleclasspathcontainer"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry path="bin" kind="output"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.4.7/a0cf1b79f9c69759ffb20f3eaece55fc01393005/HikariCP-2.4.7-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.4.7/48879ebd6f4e8374b8fc90f39e564358f9455096/HikariCP-2.4.7.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.20.1/387705d4057d11d81d278def8cb0b024f907e5be/sqlite-jdbc-3.20.1-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.20.1/df3068e837e9490a9554212fcab40a2c55faf0a3/sqlite-jdbc-3.20.1.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/com.enigmabridge/hibernate4-sqlite-dialect/0.1.2/1a1669de2daf4624fadfd110d5c494597af8ca3d/hibernate4-sqlite-dialect-0.1.2-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/com.enigmabridge/hibernate4-sqlite-dialect/0.1.2/dd69bb3ce702c40d638bbf3a9307570942af8204/hibernate4-sqlite-dialect-0.1.2.jar"/>
@@ -13,6 +16,7 @@
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-core/4.3.11.Final/404c69aa1781893987d426f4eec08020ae1f41a0/hibernate-core-4.3.11.Final-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.hibernate/hibernate-core/4.3.11.Final/536ac0021240d97db99c7d2983067cef1a6f3af5/hibernate-core-4.3.11.Final.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.7/6cfaf5c02fb50bfdf7ea5e563955d3c229d7e154/logback-classic-1.1.7-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/ch.qos.logback/logback-classic/1.1.7/9865cf6994f9ff13fce0bf93f2054ef6c65bb462/logback-classic-1.1.7.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.21/c565ca9c1239b38fe4a70e4101086c4e880f6358/jcl-over-slf4j-1.7.21-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.slf4j/jcl-over-slf4j/1.7.21/331b564a3a42f002a0004b039c1c430da89062cd/jcl-over-slf4j-1.7.21.jar"/>
+	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/ab3976d4574c48d22dc1abf6a9e8bd0fdf928223/javax.servlet-api-3.1.0-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.21/f285ac123f201fb4b028bac556928d7cf527ef48/slf4j-api-1.7.21-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.21/139535a69a4239db087de9bab0bee568bf8e0b70/slf4j-api-1.7.21.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.0.Final/3625e6818158ddb4754fa2ec51299e5f57e596b4/jboss-logging-3.3.0.Final-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging/3.3.0.Final/3616bb87707910296e2c195dc016287080bba5af/jboss-logging-3.3.0.Final.jar"/>
 	<classpathentry sourcepath="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging-annotations/1.2.0.Beta1/360b782ab568672ea968726ddf209e753c860e1a/jboss-logging-annotations-1.2.0.Beta1-sources.jar" kind="lib" path="/home/bsinou/.gradle/caches/modules-2/files-2.1/org.jboss.logging/jboss-logging-annotations/1.2.0.Beta1/2f437f37bb265d9f8f1392823dbca12d2bec06d6/jboss-logging-annotations-1.2.0.Beta1.jar"/>

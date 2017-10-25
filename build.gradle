@@ -60,6 +60,9 @@ dependencies {
 		// Logging
     	"ch.qos.logback:logback-classic",
     	"org.slf4j:jcl-over-slf4j",
+    	
+    	// Web
+    	"javax.servlet:javax.servlet-api",
     )
 
     testCompile (
@@ -73,9 +76,9 @@ jar {
     version =  '0.0.1'
 }
 
-// copy all used dependencies to a known folder
+// copy all used dependencies to the WEB-INF/lib folder
 task copyToLib(type: Copy) {
-    into "$buildDir/libs"
+    into "$buildDir/../WebContent/WEB-INF/lib"
     from configurations.runtime
 }
 
