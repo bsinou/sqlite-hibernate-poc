@@ -1,4 +1,4 @@
-package net.sinou.poc.cms;
+package net.sinou.poc.cms.sandbox;
 
 import java.text.MessageFormat;
 import java.util.List;

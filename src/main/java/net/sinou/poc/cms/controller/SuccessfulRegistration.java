@@ -14,6 +14,6 @@ public class SuccessfulRegistration extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
-		writer.println("<html><body><center> User successfully registered</center></body></html>");
+		writer.println("<html><body><center> User successfully registered, perfect</center></body></html>");
 	}
 }

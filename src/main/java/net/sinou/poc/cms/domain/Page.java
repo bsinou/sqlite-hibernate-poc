@@ -1,10 +1,14 @@
 package net.sinou.poc.cms.domain;
 
-//@Entity
-//@Table(name = "Pages")
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "PAGES")
 public class Page {
 
-	// @Id
+	@Id
 	private Long id;
 	private String title;
 	private String desc;

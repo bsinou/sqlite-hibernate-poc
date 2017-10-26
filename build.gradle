@@ -53,6 +53,15 @@ dependencies {
     	"org.xerial:sqlite-jdbc:$sqliteJdbc",
 		"com.enigmabridge:hibernate4-sqlite-dialect:$sqliteDialect",
 		
+		// Spring 
+		"org.springframework:spring-beans",
+		"org.springframework:spring-web",
+		"org.springframework:spring-webmvc",
+		"org.springframework:spring-context",
+		"org.springframework.data:spring-data-jpa",
+		"org.springframework.security:spring-security-config",
+		"org.springframework.security:spring-security-web",
+		
 		// h2 console
 		"com.h2database:h2",
 		"org.hibernate:hibernate-core",
@@ -63,6 +72,7 @@ dependencies {
     	
     	// Web
     	"javax.servlet:javax.servlet-api",
+    	"javax.servlet:jstl",
     )
 
     testCompile (
