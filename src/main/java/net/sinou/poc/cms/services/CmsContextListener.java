@@ -1,4 +1,4 @@
-package net.sinou.poc.cms.service;
+package net.sinou.poc.cms.services;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

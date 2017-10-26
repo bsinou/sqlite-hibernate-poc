@@ -5,63 +5,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.HttpConstraint;
-import javax.servlet.annotation.ServletSecurity;
-import javax.servlet.annotation.ServletSecurity.TransportGuarantee;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.sinou.poc.cms.domain.Page;
-import net.sinou.poc.cms.service.PageFacade;
+import net.sinou.poc.cms.services.PageService;
+import net.sinou.poc.cms.services.SimplePageServiceImpl;
 
-@WebServlet(name = "AdminServlet", urlPatterns = { "/admin/", "/admin/viewPages", "/admin/editPage", "/admin/logout" })
-@ServletSecurity(@HttpConstraint(transportGuarantee = TransportGuarantee.CONFIDENTIAL, rolesAllowed = { "cmsEditor" }))
+@WebServlet(name = "AdminServlet", urlPatterns = { "/admin", "/admin/viewPages", "/admin/addPage", "/admin/editPage" })
+// @ServletSecurity(@HttpConstraint(transportGuarantee =
+// TransportGuarantee.CONFIDENTIAL, rolesAllowed = { "CMS_EDITOR" }))
 public class AdminServlet extends HttpServlet {
+	private static final long serialVersionUID = 7029430336618441255L;
 
 	private String userPath;
 	private List<Page> pageList = new ArrayList<>();
-	private PageFacade pageFacade;
 
-	/**
-	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-	 * methods.
-	 *
-	 * @param request
-	 *            servlet request
-	 * @param response
-	 *            servlet response
-	 * @throws ServletException
-	 *             if a servlet-specific error occurs
-	 * @throws IOException
-	 *             if an I/O error occurs
-	 */
+	private PageService pageService = new SimplePageServiceImpl();
+
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
 		userPath = request.getServletPath();
+		System.out.println("\n\n======= Processing admin request with URL: " + userPath);
+		System.out.println("======= Request URI: " + request.getRequestURI() + "\n");
 
 		if (userPath.equals("/admin/viewPages")) {
-			pageList = pageFacade.findAll();
+			pageList = pageService.getAllPages();
 			request.setAttribute("pageList", pageList);
-		} else if (userPath.equals("/admin/editPage")) {
-			// get page id from request
-			String pageId = request.getQueryString();
-			// get page details
-			Page page = pageFacade.find(Integer.parseInt(pageId));
+			userPath = "/cms/admin/pageList.jsp";
+		} else if (userPath.equals("/admin/addPage")) {
+			Page page = new Page();
 			request.setAttribute("pageRecord", page);
-		} else if (userPath.equals("/admin/logout")) {
-			session = request.getSession();
-			session.invalidate(); // terminate session
-			response.sendRedirect("/admin/");
-			return;
-		}
+			userPath = "/cms/admin/pageDetail.jsp";
+		} else if (userPath.equals("/admin/editPage")) {
+			String pageId = request.getParameter("id");
+			Page page = pageService.getPageById(Integer.parseInt(pageId));
+			request.setAttribute("pageRecord", page);
+			userPath = "/cms/admin/pageDetail.jsp";
+		} else 
+			userPath = "/cms/admin/index.jsp";
 
-		// use RequestDispatcher to forward request internally
-		userPath = "/admin/index.jsp";
 		try {
 			request.getRequestDispatcher(userPath).forward(request, response);
 		} catch (Exception ex) {
@@ -69,36 +55,12 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Handles the HTTP <code>GET</code> method.
-	 *
-	 * @param request
-	 *            servlet request
-	 * @param response
-	 *            servlet response
-	 * @throws ServletException
-	 *             if a servlet-specific error occurs
-	 * @throws IOException
-	 *             if an I/O error occurs
-	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request, response);
 	}
 
-	/**
-	 * Handles the HTTP <code>POST</code> method.
-	 *
-	 * @param request
-	 *            servlet request
-	 * @param response
-	 *            servlet response
-	 * @throws ServletException
-	 *             if a servlet-specific error occurs
-	 * @throws IOException
-	 *             if an I/O error occurs
-	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

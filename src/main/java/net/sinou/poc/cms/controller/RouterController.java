@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.sinou.poc.cms.domain.Page;
-import net.sinou.poc.cms.service.PageFacade;
+import net.sinou.poc.cms.services.PageService;
+import net.sinou.poc.cms.services.SimplePageServiceImpl;
 
 @WebServlet(name = "RouterServlet", urlPatterns = { "/router" })
 public class RouterController extends HttpServlet {
@@ -20,7 +20,8 @@ public class RouterController extends HttpServlet {
 	private final static String PAGE_PARAM_KEY = "page";
 
 	private String userPath;
-	private PageFacade pageFacade;
+
+	private PageService pageService = new SimplePageServiceImpl();
 
 	/**
 	 * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +39,8 @@ public class RouterController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
 		userPath = request.getParameter(PAGE_PARAM_KEY);
-
-		Optional<Page> page = pageFacade.findByUrl(userPath);
-
+		Optional<Page> page = pageService.findByUrl(userPath);
 		if (!page.isPresent()) {
 			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
 			return;
@@ -53,7 +51,6 @@ public class RouterController extends HttpServlet {
 				userPath = "/cms/view/DynamicPage.jsp";
 				request.getRequestDispatcher(userPath).forward(request, response);
 			} catch (Exception ex) {
-				// TODO use a logger
 				ex.printStackTrace();
 				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			}

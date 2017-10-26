@@ -10,6 +10,7 @@ public class Page {
 
 	@Id
 	private Long id;
+	private String url;
 	private String title;
 	private String desc;
 	private String body;
@@ -17,10 +18,19 @@ public class Page {
 	public Page() {
 	}
 
-	public Page(String title, String desc, String body) {
+	public Page(String url, String title, String desc, String body) {
+		this.url = url;
 		this.title = title;
 		this.desc = desc;
 		this.body = body;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Long getId() {

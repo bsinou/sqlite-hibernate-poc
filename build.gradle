@@ -52,8 +52,12 @@ dependencies {
     	"com.zaxxer:HikariCP",
     	"org.xerial:sqlite-jdbc:$sqliteJdbc",
 		"com.enigmabridge:hibernate4-sqlite-dialect:$sqliteDialect",
-		
+
 		// Spring 
+		//"org.springframework.boot:spring-boot-starter-data-jpa",
+		//"org.springframework.boot:spring-boot-starter-security",
+		//"org.springframework.boot:spring-boot-starter-web",
+		
 		"org.springframework:spring-beans",
 		"org.springframework:spring-web",
 		"org.springframework:spring-webmvc",

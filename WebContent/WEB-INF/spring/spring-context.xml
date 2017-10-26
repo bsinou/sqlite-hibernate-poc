@@ -8,10 +8,14 @@
     	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-<!-- 	<mvc:annotation-driven /> -->
+	<!-- <mvc:annotation-driven /> -->
 
 	<!-- Force creation of the configuration -->
-	<bean class="net.sinou.poc.cms.conf.RepositoryConfiguration"
-		lazy-init="false" init-method="init" />
+<!-- 	<bean class="net.sinou.poc.cms.conf.RepositoryConfiguration" -->
+<!-- 		lazy-init="false" init-method="init" /> -->
+
+<!-- 	<bean id="pageRepository" class="net.sinou.poc.cms.repositories.PageRepository" /> -->
+
+<!-- 	<bean id="pageService" class="net.sinou.poc.cms.services.PageServiceImpl" /> -->
 
 </beans>

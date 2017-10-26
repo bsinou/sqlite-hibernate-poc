@@ -1,4 +1,4 @@
-package net.sinou.poc.cms.service;
+package net.sinou.poc.cms.services;
 
 import java.util.List;
 

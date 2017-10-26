@@ -14,45 +14,45 @@
     <jsp-config>
         <jsp-property-group>
             <description>JSP configuration for the admin console</description>
-            <url-pattern>/admin/index.jsp</url-pattern>
-            <url-pattern>/admin/login.jsp</url-pattern>
-            <url-pattern>/admin/error.jsp</url-pattern>
-            <include-prelude>/admin/jspf/header.jspf</include-prelude>
-            <include-coda>/admin/jspf/footer.jspf</include-coda>
+            <url-pattern>/cms/admin/index.jsp</url-pattern>
+            <url-pattern>/cms/admin/login.jsp</url-pattern>
+            <url-pattern>/cms/admin/error.jsp</url-pattern>
+            <include-prelude>/cms/admin/jspf/header.jspf</include-prelude>
+            <include-coda>/cms/admin/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
     
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>file</realm-name>
-        <form-login-config>
-            <form-login-page>/admin/login.jsp</form-login-page>
-            <form-error-page>/admin/error.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
+<!--     <login-config> -->
+<!--         <auth-method>FORM</auth-method> -->
+<!--         <realm-name>file</realm-name> -->
+<!--         <form-login-config> -->
+<!--             <form-login-page>/cms/admin/login.jsp</form-login-page> -->
+<!--             <form-error-page>/cms/admin/error.jsp</form-error-page> -->
+<!--         </form-login-config> -->
+<!--     </login-config> -->
     
-    <security-role>
-        <description/>
-        <role-name>cmsEditor</role-name>
-    </security-role>
+<!--     <security-role> -->
+<!--         <description/> -->
+<!--         <role-name>cmsEditor</role-name> -->
+<!--     </security-role> -->
     
 	<context-param>
     	<param-name>contextConfigLocation</param-name>
     	<param-value>/WEB-INF/spring/spring-context.xml</param-value>
 	</context-param>
 
-	<listener>
-    	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<servlet>
-    	<servlet-name>dispatcher</servlet-name>
-    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    	<init-param>
-        	<param-name>contextConfigLocation</param-name>
-        	<param-value>/WEB-INF/spring/spring-context.xml</param-value>
-    	</init-param>
-    	<load-on-startup>1</load-on-startup>
-	</servlet>
+<!-- 	<listener> -->
+<!--     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> -->
+<!-- 	</listener> -->
+<!-- 	<servlet> -->
+<!--     	<servlet-name>dispatcher</servlet-name> -->
+<!--     	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
+<!--     	<init-param> -->
+<!--         	<param-name>contextConfigLocation</param-name> -->
+<!--         	<param-value>/WEB-INF/spring/spring-context.xml</param-value> -->
+<!--     	</init-param> -->
+<!--     	<load-on-startup>1</load-on-startup> -->
+<!-- 	</servlet> -->
 	
 	<!--  <listener>
     	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

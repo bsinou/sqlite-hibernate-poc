@@ -1,13 +1,28 @@
+<%@page import="net.sinou.poc.cms.util.JspUtils"%>
 <div id="adminMenu" class="alignLeft">
 	<p>
-		<a href="<c:url value='viewCustomers'/>">view all pages</a>
+		<a href="<%JspUtils.getFullUriBase(request, "/admin/viewPages");%>">View
+			all pages</a>
 	</p>
 	<p>
-		<a href="<c:url value='logout'/>">log out</a>
+	<form method="post"
+		action="<%JspUtils.getFullUriBase(request, "/logout");%>"
+		class="inlineLink">
+		<button type="submit" class="link-button">Logout</button>
+	</form>
 	</p>
 </div>
 
 <%-- pageList is requested --%>
+<%
+	System.out.println("\n======= Request URI: " + request.getRequestURI() + "\n");
+%>
+<form method="post"
+		action="<%JspUtils.getFullUriBase(request, "/admin/addPage");%>"
+		class="inlineLink">
+		<button type="submit" class="link-button">Create page</button>
+</form>
+	
 <c:if test="${!empty pageList}">
 
 	<table id="adminTable" class="detailsTable">
@@ -61,4 +76,5 @@
 			<td><strong>body:</strong></td>
 			<td>${pageRecord.body}</td>
 		</tr>
+		</table>
 </c:if>

@@ -9,7 +9,6 @@
 		<!-- <property name="hibernate.connection.url">jdbc:sqlite:exec/test.sqlite</property> -->
 		<!-- Absolute path -->
 		<property name="hibernate.connection.url">jdbc:sqlite:/tmp/sqlite/db.sqlite</property>
-
 		<property name="hibernate.connection.username"></property>
 		<property name="hibernate.connection.password"></property>
 
@@ -20,18 +19,12 @@
 		<!-- Echo all executed SQL to stdout -->
 		<property name="hibernate.show_sql">true</property>
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
 		<!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-
 		<!-- SQL dialect -->
 		<property name="hibernate.dialect">com.enigmabridge.hibernate.dialect.SQLiteDialect</property>
 		<!-- Debug -->
 		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.show_sql">true</property>
 
-		<!-- The mapping information of entities -->
-		<!-- <mapping class="net.sinou.poc.cms.domain.Editor" /> -->
 	</session-factory>
-
-	<!-- Corresponding H2 configuration to test -->
 </hibernate-configuration>
